@@ -43,7 +43,7 @@ public:
 	bool IsArray() const { return valueArray.has_value(); }
 	bool IsNull() const { return !singleValue.has_value() && !valueArray.has_value() && !data.has_value() && !function.has_value(); }
 	void Reset() { singleValue.reset(); valueArray.reset(); data.reset(); function.reset(); }			// Resets all data to null-values
-	std::string JSONObjectToString();
+	std::string JSONObjectToString() const;
 	JSON_OBJECT& StringToJSON(std::string&);
 
 	JSON_OBJECT& push_back(const JSON_OBJECT&);
@@ -63,9 +63,6 @@ private:
 	std::optional<std::vector<JSON_OBJECT>> valueArray;					// ... or an array of values, which may in turn be objects themselves
 	std::optional<std::map<std::string, JSON_OBJECT>> data;				// ... or an object with multiple properties
 	std::optional<std::function<JSON_OBJECT(JSON_OBJECT)>> function;	// ... or a function object taking a JSON input and returning a JSON output
-	
-	std::string JSONArrayToString(std::vector<JSON_OBJECT>&) const;		// JSON to string utility function
-	void ParseJSONArrayString(std::string&);							// String to JSON utility function
 };
 
 bool ClearEnclosingChars(const char, const char, std::string&);
