@@ -59,6 +59,7 @@ JSON_OBJECT& JSON_OBJECT::StringToJSON(string& input) {
 
 		end = input.find_first_of(",");						// Find the end of the value
 		val = input.substr(0, end);							// Grab the value
+		ClearEnclosingChars('"', '"', val);					// Clear quotes from string values
 		AddProperty(key, val);								// Recursively build
 		input.erase(0, end + 1);							// Erase read portion as well as comma
 	}

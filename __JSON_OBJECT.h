@@ -49,8 +49,11 @@ public:
 	JSON_OBJECT& push_back(const JSON_OBJECT&);
 	JSON_OBJECT& AddProperty(const std::string&, const std::string&);
 	JSON_OBJECT& AddProperty(const std::string&, const JSON_OBJECT&);
-	JSON_OBJECT& operator[] (size_t index) { return (*valueArray)[index]; }		// Access element of indexed array
+	JSON_OBJECT& operator[] (size_t index) { return (*valueArray)[index]; }					// Access element of indexed array
+	const JSON_OBJECT& operator[] (size_t index) const { return (*valueArray)[index]; }		// Access element of indexed array
 	JSON_OBJECT& operator[] (const std::string& key);
+	JSON_OBJECT& at(const std::string key) { return (*data).at(key); }
+	const JSON_OBJECT& at(const std::string key) const { return (*data).at(key); }
 	// Overload operator() for function calls?
 
 	// Getters. Each returns an optional that user is responsible for checking.
