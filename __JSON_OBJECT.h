@@ -55,9 +55,13 @@ public:
 
 	// Getters. Each returns an optional that user is responsible for checking.
 	std::optional<std::string>& Val() { return singleValue; }
+	const std::optional<std::string>& Val() const { return singleValue; }
 	std::optional<std::function<JSON_OBJECT(JSON_OBJECT)>>& Func() { return function; }
+	const std::optional<std::function<JSON_OBJECT(JSON_OBJECT)>>& Func() const { return function; }
 	std::optional<std::vector<JSON_OBJECT>>& Array() { return valueArray; }
+	const std::optional<std::vector<JSON_OBJECT>>& Array() const { return valueArray; }
 	std::optional<std::map<std::string, JSON_OBJECT>>& Map() { return data; }
+	const std::optional<std::map<std::string, JSON_OBJECT>>& Map() const { return data; }
 private:
 	std::optional<std::string> singleValue;								// Object may be a single value
 	std::optional<std::vector<JSON_OBJECT>> valueArray;					// ... or an array of values, which may in turn be objects themselves
